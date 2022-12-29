@@ -12,10 +12,7 @@ const Home = () => {
 
   return (
     <div className='min-h-[600px]'>
-
-
-      <img src="b.jpeg" className='w-full max-h-[600px]' alt="" />
-
+      <img src="b.jpeg" className='w-full h-screen' alt="" />
       <h1 className='font-bold text-3xl text-center mt-10'>Brows by category</h1>
 
       {categories?.map((category,index) => <div className='mt-10' key={index}>
