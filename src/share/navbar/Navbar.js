@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
 
-    <div className='sm:h-[120px] h-14 bg-pink-800 fixed z-30 w-full'>
+    <div className='sm:h-[110px] h-14 bg-pink-800 fixed z-30 w-full'>
 
       <div className='sm:h-16 h-14 bg-pink-800 fixed flex justify-between items-center z-30 w-full '>
         <Link className='md:w-1/3' to='/'> <p className=' font-bold py-2 text-white ml-4 sm:text-5xl text-xl'>LG </p></Link>
@@ -162,10 +162,10 @@ const Navbar = () => {
 
 
 
-      <ul className='md:flex hidden justify-center fixed top-20 w-full z-30'>
+      <ul className='md:flex hidden justify-center fixed top-16 w-full z-30 font-bold'>
         <li className='py-1 text-center   group text-white mx-5 relative'> <Link to='/category/Women Fashion'>Women's Fashion</Link>
 
-          <div className='-left-11 top-[32px] absolute bg-white pt-[2px]'>
+          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
             <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Clothing'>Clothing</Link></li>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Winter Special'>Winter Special</Link></li>
@@ -178,7 +178,7 @@ const Navbar = () => {
           </div>
         </li>
         <li className='py-1 text-center  group text-white mx-5 relative'><Link to='/category/Healths and Beauty'>Heath and Beauty</Link>
-          <div className='-left-11 top-[32px] absolute bg-white pt-[2px]'>
+          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
             <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Bath and Body'>Bath and Body</Link></li>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Beauty Tools'>Beauty Tools</Link></li>
@@ -191,7 +191,7 @@ const Navbar = () => {
           </div>
         </li>
         <li className='py-1 text-center  group text-white mx-5 relative'><Link to='/category/Watches'>Watches and Bags</Link>
-          <div className='-left-11 top-[32px] absolute bg-white pt-[2px]'>
+          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
             <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Kids'>Kids</Link></li>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Laptop'>Laptop</Link></li>
@@ -205,7 +205,7 @@ const Navbar = () => {
         </li>
         <li className='py-1 text-center group text-white mx-5 relative'> <Link to='/category/Women Fashion'>Women's Fashion</Link>
 
-          <div className='-left-11 top-[32px] absolute bg-white pt-[2px]'>
+          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
             <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Clothing'>Clothing</Link></li>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Winter Special'>Winter Special</Link></li>
@@ -218,7 +218,7 @@ const Navbar = () => {
           </div>
         </li>
         <li className='py-1 text-center group text-white mx-5 relative'><Link to='/category/Healths and Beauty'>Heath and Beauty</Link>
-          <div className='-left-11 top-[32px] absolute bg-white pt-[2px]'>
+          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
             <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Bath and Body'>Bath and Body</Link></li>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Beauty Tools'>Beauty Tools</Link></li>
@@ -231,7 +231,7 @@ const Navbar = () => {
           </div>
         </li>
         <li className='py-1 text-center  group text-white mx-5 relative'><Link to='/category/Watches'>Watches and Bags</Link>
-          <div className='-left-11 top-[32px] absolute bg-white pt-[2px]'>
+          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
             <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Kids'>Kids</Link></li>
               <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Laptop'>Laptop</Link></li>
