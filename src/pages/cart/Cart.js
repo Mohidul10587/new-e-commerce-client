@@ -156,7 +156,7 @@ else{
               <td className='text-center'><img className='sm:w-16 w-10 h-10 sm:h-14 m-[1px] rounded-md border-[1px] sm:p-2 border-pink-700 sm:ml-4' src={p.img} alt="" /></td>
               <td className='text-center'>{p.name}</td>
               <td className='text-center'>${p.price}</td>
-              <td className='text-center'><button className='sm:px-3  px-2 font-bold border-gray-600 ' onClick={() => decrease(p._id, p)}>-</button><span className=''>{p.quantity}</span> <button className='sm:px-3  px-2 font-bold  border-gray-600 r' onClick={() => increase(p._id, p)}>+</button></td>
+              <td className='text-center'><button className='sm:px-3  px-2 font-bold border-pink-600 ' onClick={() => decrease(p._id, p)}>-</button><span className=''>{p.quantity}</span> <button className='sm:px-3  px-2 font-bold  border-pink-600 r' onClick={() => increase(p._id, p)}>+</button></td>
               <td className='text-center'><button className='bg-red-700 px-2 py-1 text-white rounded-md' onClick={() => handleDelete(p._id, p.name ,p.quantity)}>Delete</button></td>
             </tr>
             )}

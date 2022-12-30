@@ -90,7 +90,7 @@ function App() {
         <div>
           <Navbar />
         </div>
-        <div className='sm:px-2 sm:pt-[100px] pt-[60px]'>
+        <div className=' sm:pt-[100px] pt-[60px]'>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='category/:categoryName' element={<Category />} />
