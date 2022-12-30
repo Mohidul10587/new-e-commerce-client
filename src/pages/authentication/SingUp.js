@@ -1,3 +1,4 @@
+import { sendEmailVerification } from 'firebase/auth';
 import React from 'react'
 import { useCreateUserWithEmailAndPassword, useUpdateProfile, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
@@ -33,6 +34,10 @@ const SignUp = () => {
         firebaseError = <small className='text-red-500'>{error?.message || updateError?.message}</small>
     }
     if (token) {
+        sendEmailVerification(auth.currentUser)
+        .then(() => {
+          alert(`An verification email has sent for verify to ${user?.user.email}`)
+        });
         navigate('/');
     }
     const onSubmit = async data => {
