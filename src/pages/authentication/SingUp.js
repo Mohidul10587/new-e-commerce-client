@@ -140,7 +140,7 @@ const SignUp = () => {
 
 
                     </form>
-                    <small>Already have an account<Link className='text-pink-700 ml-4' to='/logIn'>Go to Login</Link></small>
+                    <small>Already have an account ?<Link className='text-pink-700 ml-4' to='/logIn'>Go to Login</Link></small>
 
                     <div className="divider">OR</div>
 
