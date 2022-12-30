@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -7,6 +7,7 @@ import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
 
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [
@@ -20,15 +21,15 @@ const SignUp = () => {
     let from = location.state?.from?.pathname || "/";
     const [updateProfile, updateError] = useUpdateProfile(auth);
 
-    console.log(user)
-    const [token] = useToken(user)
+    
+    const [token] = useToken(user || gUser)
 
-    console.log(user)
+   
 
-    if (loading) return <div className='flex justify-center items-center h-screen'> <p>Loading...</p>
+    if (loading ||gLoading) return <div className='flex justify-center items-center h-screen'> <p>Loading...</p>
     </div>
     let firebaseError;
-    if (error || updateError) {
+    if (error || updateError || gError) {
         firebaseError = <small className='text-red-500'>{error?.message || updateError?.message}</small>
     }
     if (token) {
@@ -139,7 +140,11 @@ const SignUp = () => {
 
 
                     </form>
-                    <small className='mb-28'>Already have an account<Link className='text-pink-700 ml-4' to='/logIn'>Go to Login</Link></small>
+                    <small>Already have an account<Link className='text-pink-700 ml-4' to='/logIn'>Go to Login</Link></small>
+
+                    <div className="divider">OR</div>
+
+                    <button onClick={() => signInWithGoogle()}     className="btn btn-outline w-full hover:bg-pink-700">Continue with google</button>
 
 
 

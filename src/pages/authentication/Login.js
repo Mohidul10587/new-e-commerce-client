@@ -121,9 +121,9 @@ const Login = () => {
                     </form>
 
 
-                    <div className='flex justify-between text-xs'>
-                        <Link className='text-gray-700' to='/signUp'>Create new account</Link> 
-                        <Link className='text-gray-700' to='/resetPassword'>Reset password</Link> 
+                    <div className='flex justify-between text-xs text-pink-500 font-bold'>
+                        <Link  to='/signUp'>Create new account</Link> 
+                        <Link  to='/resetPassword'>Forgot password ?</Link> 
                    
                     </div>
 
