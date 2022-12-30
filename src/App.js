@@ -26,6 +26,7 @@ import { createContext } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
 import Search from './pages/search/Search';
+import ResetPassword from './pages/authentication/ResetPassword';
 
 
 
@@ -100,6 +101,8 @@ function App() {
             <Route path='productDetails/:productId' element={<ProductDetails />} />
             <Route path='cart' element={<RequireAuth><Cart /></RequireAuth>} />
             <Route path='login' element={<Login />} />
+            <Route path='resetPassword' element={<ResetPassword />} />
+
             <Route path='signUp' element={<SignUp />} />
             <Route path='checkout' element={<RequireAuth><Checkout /></RequireAuth>} />
             <Route path='payment' element={<RequireAuth><Payment /></RequireAuth>} />

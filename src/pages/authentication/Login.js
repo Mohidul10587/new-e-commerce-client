@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -7,7 +7,7 @@ import useToken from '../../hooks/useToken';
 
 
 const Login = () => {
-
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
 
 
@@ -19,7 +19,7 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
 
 
-    const [token] = useToken(user)
+    const [token] = useToken(user || gUser)
 
     useEffect(() => {
         if (token) {
@@ -29,7 +29,7 @@ const Login = () => {
 
     let firebaseError;
 
-    if (loading) {
+    if (loading || gLoading) {
 
         return <div className='flex justify-center items-center h-screen'> <p>Loading</p>
         </div>
@@ -121,7 +121,15 @@ const Login = () => {
                     </form>
 
 
-                    <small className='mb-[210px]'>New to this site  ? <Link className='text-pink-700' to='/signUp'>Create new account</Link></small>
+                    <div className='flex justify-between text-xs'>
+                        <Link className='text-gray-700' to='/signUp'>Create new account</Link> 
+                        <Link className='text-gray-700' to='/resetPassword'>Reset password</Link> 
+                   
+                    </div>
+
+                    <div className="divider">OR</div>
+
+                    <button onClick={() => signInWithGoogle()}     className="btn btn-outline w-full hover:bg-pink-700">Continue with google</button>
 
 
                   
