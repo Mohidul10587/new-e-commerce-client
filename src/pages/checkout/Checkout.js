@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
+import { loadStripe } from '@stripe/stripe-js';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import { UserContext } from '../../App';
 import auth from '../../firebase.init';
-
+const stripePromise = loadStripe('pk_test_51MSFzbGk3QfbJiMcAMdawDS9s63H0pHuUBObNkwMUVVB87OtENGrkvFKz5R4hqW5rsdUXYQ6afb95srcz0AsMImM00j8ivRv40');
 
 const Checkout = () => {
   const value = useContext(UserContext);
