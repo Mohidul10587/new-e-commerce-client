@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { toast } from 'react-toastify';
 
@@ -25,13 +26,27 @@ const UserRow = ({ user, refetch }) => {
 
       })
   }
+  const handleDelete = (id) => {
 
+    fetch(`https://mohid-shop.onrender.com/deleteUser/${id}`, {
+      method: 'DELETE',
+
+    }).then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.deletedCount) {
+         
+          toast.success(`Deleted`)
+          refetch()
+        }
+      })
+  }
 
   return (
     <tr className='border-[1px] border-pink-700'>
       <td className='border-[1px] border-pink-700'>{email}</td>
       <td className='border-[1px] border-pink-700'>{roll !== 'admin' ?<button onClick={makeAdmin} className="text-white rounded-md py-1 px-2 bg-pink-700">Make Admin</button>: <p className='ml-5 font-bold'>Admin</p>} </td>
-      <td className='border-[1px] border-pink-700'><button className="text-white rounded-md py-1 px-2 bg-pink-700">Remove User</button></td>
+      <td className='border-[1px] border-pink-700'><button className="text-white rounded-md py-1 px-2 bg-pink-700" onClick={()=>handleDelete(user._id)}>Remove User</button></td>
 
     </tr>
   )
