@@ -62,7 +62,6 @@ const Home2 = () => {
                 <div className='text-end'>
                     <Button variant="primary"><NavLink to="/reg" className="text-decoration-none text-light"> Add User</NavLink></Button>
                 </div>
-
                 <div className='d-flex justify-content-between align-iteams-center mt-5'>
                     {
                         data.length > 0 ? data.map((el, i) => {
