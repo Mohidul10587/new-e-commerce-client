@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { NavLink } from "react-router-dom"
 import Card from 'react-bootstrap/Card';
 import axios from 'axios';
-import moment from "moment"
+// import moment from "moment"
 import Alert from 'react-bootstrap/Alert';
 
 const Home2 = () => {
@@ -73,7 +73,7 @@ const Home2 = () => {
                                         <Card.Body className='text-center'>
                                             <Card.Title>UserName : {el.username}</Card.Title>
                                             <Card.Text>
-                                                Date Added : {moment(el.date).format("DD-MM-YYYY")}
+                                                {/* Date Added : {moment(el.date).format("DD-MM-YYYY")} */}
                                             </Card.Text>
                                             <Button variant="danger" onClick={() => dltUser(el.id)} className='col-lg-6 text-center'>Delete</Button>
                                         </Card.Body>
