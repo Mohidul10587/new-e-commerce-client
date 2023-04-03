@@ -41,6 +41,10 @@ const Dashboard = () => {
             <li className='mb-2 bg-white rounded-md'> <Link to='/dashboard/AllOrders'>All Orders</Link></li>
             <li className='mb-2 bg-white rounded-md'> <Link to='/dashboard/form'>Upload Products</Link></li>
             <li className='mb-2 bg-white rounded-md'> <Link to='/dashboard/allUser'>All User</Link></li>
+            <li className='mb-2 bg-white rounded-md'> <Link to='/dashboard/createCategory'>Add Product Category</Link></li>
+            <li className='mb-2 bg-white rounded-md'> <Link to='/dashboard/allCategory'>Add Product Category</Link></li>
+
+
           </div>}
         </ul>
 

@@ -35,7 +35,7 @@ const Login = () => {
         </div>
     }
 
-    if (error) {
+    if (error || gError) {
         firebaseError = <small className='text-red-500'>{error?.message}</small>
     }
 

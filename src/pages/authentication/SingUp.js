@@ -2,7 +2,7 @@ import { sendEmailVerification } from 'firebase/auth';
 import React from 'react'
 import { useCreateUserWithEmailAndPassword, useUpdateProfile, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useToken from '../../hooks/useToken';
 
@@ -18,8 +18,8 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate()
-    let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+    // let location = useLocation();
+    // let from = location.state?.from?.pathname || "/";
     const [updateProfile, updateError] = useUpdateProfile(auth);
 
     

@@ -8,7 +8,6 @@ const Category = () => {
   const [count, setCount] = useState(0);
   const [size] = useState(10)
   const [page, setPage] = useState(0);
-  console.log(page)
   const query = useParams()
   const categoryName = query.categoryName;
   useEffect(() => {

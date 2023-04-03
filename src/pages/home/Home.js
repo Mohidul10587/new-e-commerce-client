@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import Banner from './Banner';
 
 const Home = () => {
   const [categories, setCategory] = useState([])
@@ -12,7 +13,7 @@ const Home = () => {
 
   return (
     <div>
-      <div style={{ backgroundImage: "url(/b.jpeg)" }} className='h-screen bg-cover italic'>
+      {/* <div style={{ backgroundImage: "url(/b.jpeg)" }} className='h-screen bg-cover italic'>
         <div className='h-full w-full bg-gray-900 bg-opacity-50 flex justify-center items-center'>
 
           <div className='w-1/2'>
@@ -23,7 +24,16 @@ const Home = () => {
             <p className='font bold text-2xl text-white mt-4 hidden md:block'> Biker’s Warehouse is one of Johannesburg’s top bike and accessory brand suppliers. Our brands are carefully selected to offer the widest product range to cater for the needs of any road, dual-sport or off-road enthusiast. </p>
           </div>
         </div>
-      </div>
+      </div> */}
+
+
+
+<Banner/>
+
+
+
+
+
 
       <h1 className='font-bold text-3xl text-center mt-10'>Brows by category</h1>
 

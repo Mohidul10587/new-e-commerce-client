@@ -27,6 +27,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
 import Search from './pages/search/Search';
 import ResetPassword from './pages/authentication/ResetPassword';
+import Home2 from './components/Home2';
+import CreateCategory from './pages/admin/CreateCategory';
+import Home3 from './pages/admin/AllCategories';
 
 
 
@@ -40,17 +43,9 @@ function App() {
   const customersEmail = user?.email;
   const [countCartProducts, setCountCartProducts] = useState(0)
 
-
-
-
-
   const [searchName, setSearchName] = useState('All');
   const [searchedProducts, setSearchedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
-
-
-
 
   useEffect(() => {
     setLoading(true)
@@ -96,7 +91,10 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='category/:categoryName' element={<Category />} />
             <Route path='search' element={<Search />} />
+            <Route path='home2' element={<Home2 />} />
+        
 
+           
             <Route path='subCategory/:subCategoryName' element={<SubCategory />} />
             <Route path='productDetails/:productId' element={<ProductDetails />} />
             <Route path='cart' element={<RequireAuth><Cart /></RequireAuth>} />
@@ -113,6 +111,9 @@ function App() {
               <Route path='AllOrders' element={<RequireAdmin><Orders /></RequireAdmin>}></Route>
               <Route path='form' element={<RequireAdmin><Form /></RequireAdmin>}></Route>
               <Route path='allUser' element={<RequireAdmin><AllUser /></RequireAdmin>}></Route>
+              <Route path='createCategory' element={<CreateCategory />} />
+              <Route path='allCategory' element={<Home3/>} />
+
             </Route>
           </Routes>
         </div>
