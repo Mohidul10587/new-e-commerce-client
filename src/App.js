@@ -27,9 +27,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
 import Search from './pages/search/Search';
 import ResetPassword from './pages/authentication/ResetPassword';
-import Home2 from './components/Home2';
+import UploadProducts from './pages/admin/uploadProducts';
+import Home3 from './pages/admin/AllProducts';
 import CreateCategory from './pages/admin/CreateCategory';
-import Home3 from './pages/admin/AllCategories';
 
 
 
@@ -91,10 +91,6 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='category/:categoryName' element={<Category />} />
             <Route path='search' element={<Search />} />
-            <Route path='home2' element={<Home2 />} />
-        
-
-           
             <Route path='subCategory/:subCategoryName' element={<SubCategory />} />
             <Route path='productDetails/:productId' element={<ProductDetails />} />
             <Route path='cart' element={<RequireAuth><Cart /></RequireAuth>} />
@@ -111,8 +107,10 @@ function App() {
               <Route path='AllOrders' element={<RequireAdmin><Orders /></RequireAdmin>}></Route>
               <Route path='form' element={<RequireAdmin><Form /></RequireAdmin>}></Route>
               <Route path='allUser' element={<RequireAdmin><AllUser /></RequireAdmin>}></Route>
-              <Route path='createCategory' element={<CreateCategory />} />
-              <Route path='allCategory' element={<Home3/>} />
+              <Route path='allProducts' element={< Home3/>} />
+              <Route path='uploadProducts' element={<UploadProducts/>} />
+              <Route path='createCategory' element={<CreateCategory/>} />
+
 
             </Route>
           </Routes>

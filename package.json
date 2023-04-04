@@ -28,8 +28,8 @@
     "react-slick": "^0.29.0",
     "react-toastify": "^9.1.1",
     "slick-carousel": "^1.8.1",
-    "web-vitals": "^2.1.4",
-    "zustand": "^4.1.4"
+    "web-vitals": "^2.1.4"
+
   },
   "scripts": {
     "start": "react-scripts start",
