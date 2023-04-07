@@ -16,9 +16,7 @@ const Navbar = () => {
   const [dropdown, setDropdown] = useState(true)
   const [user] = useAuthState(auth)
   const navigate = useNavigate()
-  const [first, setFirst] = useState(true)
-  const [second, setSecond] = useState(true)
-  const [third, setThird] = useState(true)
+
 
   window.onclick = function (event) {
     if (!event.target.matches('.sharebtn')) {
@@ -61,82 +59,6 @@ const Navbar = () => {
 
           {user ? <button className='sm:mx-3 mx-1 my-3 px-3 text-2xl font-bold text-white' onClick={signedOut}><VscSignOut /></button> : <Link to="/login"><button className='sm:mx-3 mx-1 my-3 px-3 text-2xl font-bold text-white' ><AiOutlineLogin /></button></Link>}
         </div>
-
-
-
-
-
-        {/* category and subcategories for mobile */}
-
-        <li className=' group text-white list-none md:hidden'><span className='font-bold'>Category</span>
-          <div className='hidden group-hover:block group fixed  top-14 pt-2 left-0 text-center w-full  bg-pink-500  '>
-
-            <div >
-              <ul className='flex justify-between w-full px-4'>
-                <li onClick={() => {
-                  setFirst(!first)
-                  setSecond(true)
-                  setThird(true)
-                }}><span className='font-bold border-b-[2px] border-white pb-1'>For Women</span>
-
-                  <ul className={first ? 'hidden' : 'block'}>
-
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Clothing'>Clothing</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Winter Special'>Winter Special</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Muslim Were'>Muslim Were</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Shoes'>Shoes</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Watches'>Watches</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Jewellers'>Jewellers</Link></li>
-
-                  </ul>
-
-                </li>
-                <li onClick={() => {
-                  setSecond(!second)
-                  setFirst(true)
-                  setThird(true)
-                }}><span className='font-bold border-b-[2px] border-white pb-1'>Heaths</span>
-
-
-                  <ul className={second ? 'hidden' : 'block'}>
-
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Bath and Body'>Bath and Body</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Beauty Tools'>Beauty Tools</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Fragrance'>Fragrance</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Hair Care'>Hair Care</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Makeup'>Makeup</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Mens Care'>Men's Care</Link></li>
-
-                  </ul>
-                </li>
-
-                <li onClick={() => {
-                  setThird(!third)
-                  setFirst(true)
-                  setSecond(true)
-                }}><span className='font-bold border-b-[2px] border-white pb-1'>Watches</span>
-
-                  <ul className={third ? 'hidden' : 'block'}>
-
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Kids'>Kids</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Laptop'>Laptop</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Luggage'>Luggage</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Travel Bags'>Travel Bags</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Mens Bags'>Mens Bags</Link></li>
-                    <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Womens Bags'>Womens Bags</Link></li>
-
-                  </ul>
-
-                </li>
-
-              </ul>
-            </div>
-          </div>
-
-        </li>
-
-
-
         {/* sidebar for mobile  device */}
         <svg className="md:hidden sharebtn hover:border-white border-pink-800 mr-4 p-2" onClick={() => setDropdown(!dropdown)} width='32px' fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg>
 
@@ -162,88 +84,7 @@ const Navbar = () => {
 
 
 
-      <ul className='md:flex hidden justify-center fixed top-16 w-full z-30 font-bold'>
-        <li className='py-1 text-center   group text-white mx-5 relative'> <Link to='/category/Women Fashion'>Women's Fashion</Link>
-
-          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
-            <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Clothing'>Clothing</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Winter Special'>Winter Special</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Muslim Were'>Muslim Were</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Shoes'>Shoes</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Watches'>Watches</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Jewellers'>Jewellers</Link></li>
-
-            </ul>
-          </div>
-        </li>
-        <li className='py-1 text-center  group text-white mx-5 relative'><Link to='/category/Healths and Beauty'>Heath and Beauty</Link>
-          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
-            <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Bath and Body'>Bath and Body</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Beauty Tools'>Beauty Tools</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Fragrance'>Fragrance</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Hair Care'>Hair Care</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Makeup'>Makeup</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Mens Care'>Men's Care</Link></li>
-
-            </ul>
-          </div>
-        </li>
-        <li className='py-1 text-center  group text-white mx-5 relative'><Link to='/category/Watches'>Watches and Bags</Link>
-          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
-            <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Kids'>Kids</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Laptop'>Laptop</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Luggage'>Luggage</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Travel Bags'>Travel Bags</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Mens Bags'>Mens Bags</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Womens Bags'>Womens Bags</Link></li>
-
-            </ul>
-          </div>
-        </li>
-        <li className='py-1 text-center group text-white mx-5 relative'> <Link to='/category/Women Fashion'>Women's Fashion</Link>
-
-          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
-            <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Clothing'>Clothing</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Winter Special'>Winter Special</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Muslim Were'>Muslim Were</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Shoes'>Shoes</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Watches'>Watches</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Jewellers'>Jewellers</Link></li>
-
-            </ul>
-          </div>
-        </li>
-        <li className='py-1 text-center group text-white mx-5 relative'><Link to='/category/Healths and Beauty'>Heath and Beauty</Link>
-          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
-            <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Bath and Body'>Bath and Body</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Beauty Tools'>Beauty Tools</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Fragrance'>Fragrance</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Hair Care'>Hair Care</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Makeup'>Makeup</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Mens Care'>Men's Care</Link></li>
-
-            </ul>
-          </div>
-        </li>
-        <li className='py-1 text-center  group text-white mx-5 relative'><Link to='/category/Watches'>Watches and Bags</Link>
-          <div className='-left-11 top-[32px] absolute bg-pink-800 pt-[14px] rounded rounded-b-md'>
-            <ul className='hidden group-hover:block bg-pink-600 text-white  pt-4 px-2  pb-2 rounded rounded-b-md w-56 '>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Kids'>Kids</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Laptop'>Laptop</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Luggage'>Luggage</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Travel Bags'>Travel Bags</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Mens Bags'>Mens Bags</Link></li>
-              <li className='py-1 text-center hover:text-pink-500 hover:bg-white'> <Link to='/subCategory/Womens Bags'>Womens Bags</Link></li>
-
-            </ul>
-          </div>
-        </li>
-      </ul>
+     
 
     </div>
   )

@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from "react-router-dom"
 
-
-import Alert from 'react-bootstrap/Alert';
 
 const Home2 = () => {
 
     const [data, setData] = useState([]);
 
-    const [show, setShow] = useState(false);
 
     const getUserData = async () => {
         await fetch("http://localhost:8004/getdata", {
@@ -44,14 +40,15 @@ const Home2 = () => {
                     <p className='w-24 text-start'>Img</p>
                     <p className='w-24 text-start'>Name</p>
                     <p className='w-24 text-start'>Price</p>
+                    <p className='w-24 text-start'>Show</p>
                     <p className='w-24 text-center'>X</p>
 
                 </div>
                 {data.map(d => <div key={d.id} className='flex justify-between items-center px-4 py-2 rounded border-[1px] border-teal-600 mt-2'>
-                    <div className='w-24 '> <img className='h-14 w-14 rounded-full p-2 border-[1px] border-teal-700' src={`http://localhost:8004/uploads/${d.userimg}`} alt="" /></div>
-                    <p className='w-24 text-start'>{d.username}</p>
+                    <div className='w-24 '> <img className='h-14 w-14 rounded-full p-2 border-[1px] border-teal-700' src={`http://localhost:8004/uploads/${d.img}`} alt="" /></div>
+                    <p className='w-24 text-start'>{d.name}</p>
                     <p className='w-24 text-start'>$ {d.priceOfUnit}</p>
-
+                    <p className='w-24 text-start'>Show In Home Page</p>
                     <button className="border-2 border-black rounded px-2 py-1"><label htmlFor="my-modal" >Delete</label></button>
 
                     
