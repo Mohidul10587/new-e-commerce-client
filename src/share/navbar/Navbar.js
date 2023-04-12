@@ -1,13 +1,16 @@
 import { signOut } from 'firebase/auth';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom'
 import auth from '../../firebase.init';
-import { AiOutlineShoppingCart, AiOutlineHome, AiOutlineLogin} from 'react-icons/ai'
+import { AiOutlineShoppingCart, AiOutlineHome, AiOutlineLogin } from 'react-icons/ai'
 import { FaRegUser, FaSearch } from 'react-icons/fa'
+import { BiChevronRight } from 'react-icons/bi'
+
 import { VscSignOut } from 'react-icons/vsc'
 import { useContext } from "react";
 import { UserContext } from '../../App';
+import url from '../../components/url';
 
 
 const Navbar = () => {
@@ -18,18 +21,25 @@ const Navbar = () => {
   const navigate = useNavigate()
 
 
-  window.onclick = function (event) {
-    if (!event.target.matches('.sharebtn')) {
-      setDropdown(true)
-
-    }
-  }
 
   const signedOut = () => {
     signOut(auth);
     localStorage.removeItem('accessToken');
     navigate('/logIn');
   }
+
+
+
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+
+
+    fetch(`${url}/getCategoryName`)
+      .then(res => res.json())
+      .then(data => setCategories(data.data))
+
+  }, [])
 
   return (
 
@@ -41,8 +51,8 @@ const Navbar = () => {
           <div className=''>
             <form onSubmit={value.search}>
               <div className='border-[1px] rounded-md px-1 md:w-[315px] w-24 md:h-10 h-6 flex justify-between items-center'>
-              <input className='md:pl-2 w-full bg-pink-800 md:h-8 h-5 text-white' name='name' type="text" />
-              <button type="submit" className='md:px-3 px-1 md:h-8 h-3 font-xl text-white md:bg-pink-700 rounded-md ml-1'><FaSearch /></button>
+                <input className='md:pl-2 w-full bg-pink-800 md:h-8 h-5 text-white' name='name' type="text" />
+                <button type="submit" className='md:px-3 px-1 md:h-8 h-3 font-xl text-white md:bg-pink-700 rounded-md ml-1'><FaSearch /></button>
               </div>
             </form>
           </div>
@@ -80,11 +90,24 @@ const Navbar = () => {
       </div>
 
 
-      {/* category and subcategories */}
-
-
-
-     
+      <div className='w-48 bg-white mt-[62px] group/item z-50'>
+        <p className='pl-4 py-3 text-white bg-pink-800  hover:bg-pink-700'>Categories</p>
+        <ul className='pl-4 hidden group-hover/item:block'>
+          {categories.map((c) => (
+            <li key={c.id} className='group  px-2 py-1 my-1 hover:font-bold relative'>
+            <Link to={`/${c.categoryName}`}> <div className='flex justify-between items-center group/list'> <span>{c.categoryName}</span> <BiChevronRight className='hidden font-bold group-hover/list:block' /></div></Link>
+              {JSON.parse(c.subCategoryName).length !== 0 && (
+                <div>
+                  <ul className='absolute bg-white hidden group-hover:block w-32 -top-1 left-[175px] z-30 px-2'>
+                    {JSON.parse(c.subCategoryName).map((c) => (
+                     <Link key={c}  to={`/sub/${c}`}> <li className='p-1 bg-white font-normal hover:font-bold'>  {c} </li></Link>))}
+                  </ul>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
 
     </div>
   )

@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { toast } from 'react-toastify';
 import url from '../../components/url';
 
@@ -10,6 +10,9 @@ const UploadProducts = () => {
     const [priceOfUnit, setPriceOfUnit] = useState('')
     const [data, setData] = useState([])
     const [catName, setCatName] = useState([])
+
+    const categoryNameRef = useRef();
+
 
     useEffect(() => {
 
@@ -40,15 +43,16 @@ const UploadProducts = () => {
         const formData = new FormData();
         formData.append("photo", file);
         formData.append("fname", fname);
-        formData.append("categoryName", e.target.categoryName.value);
+        formData.append("categoryName", categoryNameRef.current.value);
         formData.append("subCategoryName", e.target.subCategoryName.value);
         formData.append("unit", unit);
         formData.append("priceOfUnit", priceOfUnit);
         const headers = new Headers();
         // headers.append("Authorization", "Bearer " + 'token'); // replace with your token if needed
+        console.log(categoryNameRef.current.value, e.target.subCategoryName.value)
 
 
-        await fetch("http://localhost:8004/register", {
+        await fetch(`${url}/addProduct`, {
             method: "POST",
             body: formData,
             headers: headers,
@@ -76,10 +80,11 @@ const UploadProducts = () => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="categoryName" className="block text-gray-700 font-bold mb-2"> Category Name</label>
-                        <select className='border-2 p-2 border-black rounded w-full' type="text" id="categoryName" name="categoryName" onChange={(e) => setCategoryId(e.target.value)} required >
+                        <select className='border-2 p-2 border-black rounded w-full' type="text" id="categoryName" name="categoryName" onChange={(e) => 
+                            setCategoryId(e.target.value)}  ref={categoryNameRef} required >
 
                             {
-                                data.map(d => <option value={d.categoryName} key={d.id}> {d.categoryName}</option>)
+                                data.map(d => <option value={d.categoryName}  key={d.id}> {d.categoryName}</option>)
                             }
 
                         </select>
@@ -88,8 +93,8 @@ const UploadProducts = () => {
 
 
                     <div className="mb-4">
-                        <label htmlFor="categoryName" className="block text-gray-700 font-bold mb-2">Sub Category Name</label>
-                        <select className='border-2 p-2 border-black rounded w-full' type="text" id="categoryName" name="subCategoryName" required >
+                        <label htmlFor="subCategoryName" className="block text-gray-700 font-bold mb-2">Sub Category Name</label>
+                        <select className='border-2 p-2 border-black rounded w-full' type="text" id="subCategoryName" name="subCategoryName" required >
                             {
                                 catName.map(d => <option value={d} key={d}> {d}</option>)
                             }

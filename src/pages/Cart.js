@@ -3,10 +3,11 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { useQuery } from 'react-query'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { UserContext } from '../../App'
+import { UserContext } from '../App'
 
 
-import auth from '../../firebase.init'
+import auth from '../firebase.init'
+import url from '../components/url'
 
 
 const Cart = () => {
@@ -14,7 +15,7 @@ const Cart = () => {
 
   const [user] = useAuthState(auth)
   const customersEmail = user?.email;
-  const { data: products, isLoading, refetch } = useQuery(['products', customersEmail], () => fetch(`https://mohid-shop.onrender.com/cart/${customersEmail}`, {
+  const { data: products, isLoading, refetch } = useQuery(['products', customersEmail], () => fetch(`${url}/cart/${customersEmail}`, {
     method: 'GET',
     headers: {
       'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -135,6 +136,8 @@ else{
   }
   if (products.length === 0) return <div className='min-h-[600px] text-center font-bold mt-10 text-2xl'> <p>Sorry you do not add any product to cart. Please add  products to cart first.</p></div>
 
+console.log(products.data)
+
   return (
 
     <div className='min-h-[600px]'>
@@ -152,7 +155,7 @@ else{
             </tr>
           </thead>
           <tbody className=''>
-            {products.map(p => <tr key={p._id} className='border-[1px] border-pink-700'>
+            {products.data.map(p => <tr key={p.id} className='border-[1px] border-pink-700'>
               <td className='text-center'><img className='sm:w-16 w-10 h-10 sm:h-14 m-[1px] rounded-md border-[1px] sm:p-2 border-pink-700 sm:ml-4' src={p.img} alt="" /></td>
               <td className='text-center'>{p.name}</td>
               <td className='text-center'>${p.price}</td>

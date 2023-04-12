@@ -9,16 +9,11 @@ const CreateCategory = () => {
   const [categories, setCategories] = useState([])
   const [categoryName2, getCategoryName] = useState('')
 
-
   useEffect(() => {
-
-
     fetch(`${url}/getCategoryName`)
       .then(res => res.json())
       .then(data => setCategories(data.data))
-
-  }, [categories])
-
+  }, [])
 
 
   const handleForm = async (e) => {

@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useToken from '../../hooks/useToken';
+import url from '../../components/url';
 
 const SignUp = () => {
 
@@ -41,9 +42,18 @@ const SignUp = () => {
         navigate('/');
     }
     const onSubmit = async data => {
-        console.log(data);
-        await createUserWithEmailAndPassword(data.email, data.password)
-        await updateProfile({ displayName: data.name });
+        fetch(`${url}/createUser`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+        // await createUserWithEmailAndPassword(data.email, data.password)
+        // await updateProfile({ displayName: data.name });
     }
     return (
         <div className='flex justify-center items-center '>
