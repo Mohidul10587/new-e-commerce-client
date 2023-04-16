@@ -10,13 +10,10 @@ const ResetPassword = () => {
     const navigate = useNavigate();
 
     const onSubmit = data => {
-
         sendPasswordResetEmail(auth, data.email)
         alert('check your email for reset password');
         navigate('/login');
-
     }
-
     return (
         <div className='flex justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -24,8 +21,6 @@ const ResetPassword = () => {
                     <h2 className="text-center text-xl">Reset Password</h2>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
-
-
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
                                 <span className="label-text">Email</span>

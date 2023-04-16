@@ -1,29 +1,51 @@
-import React from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { Navigate, useLocation } from 'react-router-dom';
-import auth from '../../firebase.init';
+import React, { useContext, useState } from 'react'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import url from '../../components/url';
+import { UserContext } from '../../App';
+
 
 
 const RequireAuth = ({ children }) => {
-    const [user, loading] = useAuthState(auth);
 
-  
-    let location = useLocation();
+    const value = useContext(UserContext);
 
 
-    if (loading) return <div className='flex justify-center items-center h-screen'> <p>Loading</p>
-    </div>
 
 
-    if (!user) {
 
-        return <Navigate to="/logIn" state={{ from: location }} replace />;
+
+    const [loading, setLoading] = useState(true)
+    async function handleMe() {
+
+
+        try {
+            await fetch(`${url}/me`, {
+                headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` },
+            }).then(res => res.json())
+                .then(data => {
+                    if (data.email) {
+                        value.setUser(true)
+
+                    }
+                })
+        } catch (error) {
+            console.log('error', error)
+        }
+        setLoading(false)
+    }
+    handleMe()
+
+    if (loading) return <p className='min-h-screen  pt-24'>Loading.......................</p>
+
+    if (value.user) {
+        return children;
     }
 
-    return children;
+    return <Navigate to="/login" ></Navigate>;
 }
 
 export default RequireAuth
+
 
 
 

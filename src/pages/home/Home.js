@@ -20,7 +20,6 @@ const Home = () => {
   return (
     <div>
       <div className=''>
-       
         <div className='w-full'>
           <Banner />
         </div>
@@ -31,7 +30,7 @@ const Home = () => {
       <h1 className='font-bold text-3xl text-center mt-10'>In lowest price buy qualified regular product </h1>
 
       <div className='grid grid-cols-4 px-10 gap-7 mt-10'>
-        {products.map(product => <ProductCard product={product} />)}
+        {products.map((product, i) => <ProductCard key={i} product={product} />)}
       </div>
 
     </div>

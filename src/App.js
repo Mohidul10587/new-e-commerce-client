@@ -19,10 +19,8 @@ import AllUser from './pages/admin/AllUser';
 import MyOrders from './pages/admin/MyOrders';
 import RequireAdmin from './pages/authentication/RequireAdmin';
 import Profile from './pages/admin/Profile';
-import { useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { createContext } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from './firebase.init';
 import Search from './pages/search/Search';
 import ResetPassword from './pages/authentication/ResetPassword';
 import UploadProducts from './pages/admin/uploadProducts';
@@ -36,49 +34,12 @@ import Category from './pages/category';
 export const UserContext = createContext('mohid')
 
 function App() {
-  const navigate = useNavigate()
-  const [user] = useAuthState(auth)
-  const customersEmail = user?.email;
-  const [countCartProducts, setCountCartProducts] = useState(0)
-  const [searchName, setSearchName] = useState('All');
-  const [searchedProducts, setSearchedProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(true)
-    fetch(`https://mohid-shop.onrender.com/productsName/${searchName}`)
-      .then(res => res.json())
-      .then(data => {
-        setSearchedProducts(data)
-        setLoading(false)
+const [user ,setUser] = useState(false)
 
-      })
-  }, [searchName])
-
-  const search = (e) => {
-    e.preventDefault()
-
-    if (!e.target.name.value) {
-      return
-    }
-
-    setSearchName(e.target.name.value)
-    navigate('/search')
-    e.target.name.value = ''
-  }
-
-
-  useEffect(() => {
-    fetch(`https://mohid-shop.onrender.com/cartProductsCount/${customersEmail}`)
-      .then(res => res.json())
-      .then(data => setCountCartProducts(parseInt(data.count)))
-  }, [customersEmail, countCartProducts])
-
-
-
-
+useEffect(()=>{},[user])
   return (
-    <UserContext.Provider value={{ countCartProducts, setCountCartProducts, searchedProducts, search, loading }}>
+    <UserContext.Provider value={{user ,setUser }}>
       <div>
         <div>
           <Navbar />

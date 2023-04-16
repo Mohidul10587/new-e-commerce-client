@@ -1,4 +1,4 @@
-import { signOut } from 'firebase/auth';
+
 import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom'
@@ -23,8 +23,9 @@ const Navbar = () => {
 
 
   const signedOut = () => {
-    signOut(auth);
+
     localStorage.removeItem('accessToken');
+    value.setUser(false)
     navigate('/logIn');
   }
 
@@ -49,7 +50,7 @@ const Navbar = () => {
         <Link className='md:w-1/3' to='/'> <p className=' font-bold py-2 text-white ml-4 sm:text-5xl text-xl'>LG </p></Link>
         <div className='md:w-1/3 w-24'>
           <div className=''>
-            <form onSubmit={value.search}>
+            <form >
               <div className='border-[1px] rounded-md px-1 md:w-[315px] w-24 md:h-10 h-6 flex justify-between items-center'>
                 <input className='md:pl-2 w-full bg-pink-800 md:h-8 h-5 text-white' name='name' type="text" />
                 <button type="submit" className='md:px-3 px-1 md:h-8 h-3 font-xl text-white md:bg-pink-700 rounded-md ml-1'><FaSearch /></button>
@@ -61,13 +62,13 @@ const Navbar = () => {
         {/* menu for desktop device */}
         <div className='md:flex justify-end hidden md:w-1/3'>
 
-          {user && <Link className='' to='dashboard'><p className='sm:mx-3 mx-1 my-3 px-3 text-2xl font-bold text-white'><FaRegUser /></p></Link>}
+          {value.user && <Link className='' to='dashboard'><p className='sm:mx-3 mx-1 my-3 px-3 text-2xl font-bold text-white'><FaRegUser /></p></Link>}
 
           <Link to='/'> <p className='sm:mx-3 mx-1 my-3 px-3 text-2xl font-bold text-white'><AiOutlineHome /></p></Link>
 
-          <Link to='/cart'> <div className='sm:mx-3 mx-1 my-3 px-3 text-2xl font-bold text-white flex'><AiOutlineShoppingCart /> <p className='font-normal text-sm'><sup>{value.countCartProducts}</sup></p> </div> </Link>
+          <Link to='/cart'> <div className='sm:mx-3 mx-1 my-3 px-3 text-2xl font-bold text-white flex'><AiOutlineShoppingCart /> <p className='font-normal text-sm'><sup></sup></p> </div> </Link>
 
-          {user ? <button className='sm:mx-3 mx-1 my-3 px-3 text-2xl font-bold text-white' onClick={signedOut}><VscSignOut /></button> : <Link to="/login"><button className='sm:mx-3 mx-1 my-3 px-3 text-2xl font-bold text-white' ><AiOutlineLogin /></button></Link>}
+          {value.user ? <button className='sm:mx-3 mx-1 my-3 px-3 text-2xl font-bold text-white' onClick={signedOut}><VscSignOut /></button> : <Link to="/login"><button className='sm:mx-3 mx-1 my-3 px-3 text-2xl font-bold text-white' ><AiOutlineLogin /></button></Link>}
         </div>
         {/* sidebar for mobile  device */}
         <svg className="md:hidden sharebtn hover:border-white border-pink-800 mr-4 p-2" onClick={() => setDropdown(!dropdown)} width='32px' fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg>
@@ -76,7 +77,7 @@ const Navbar = () => {
 
           {user && <Link to='dashboard'>  <p onClick={() => setDropdown(true)} className=" border hover:border-white px-2 mx-2 border-pink-700  my-2 flex h-10 items-center"><FaRegUser /> <span className='ml-4'>Dashboard</span> </p></Link>}
           <Link to='/'><p onClick={() => setDropdown(true)} className=" border hover:border-white px-2 mx-2 border-pink-700  my-2 flex h-10 items-center"><AiOutlineHome /> <span className='ml-4'>Home </span></p></Link>
-          <Link to='/cart'><p onClick={() => setDropdown(true)} className=" border hover:border-white px-2 mx-2 border-pink-700  my-2 flex h-10 items-center"><AiOutlineShoppingCart /> <span className='ml-4'>Cart<sup>{value.countCartProducts}</sup></span></p></Link>
+          <Link to='/cart'><p onClick={() => setDropdown(true)} className=" border hover:border-white px-2 mx-2 border-pink-700  my-2 flex h-10 items-center"><AiOutlineShoppingCart /> <span className='ml-4'>Cart<sup></sup></span></p></Link>
           <Link to='/search'><p onClick={() => setDropdown(true)} className=" border hover:border-white px-2 mx-2 border-pink-700  my-2 flex h-10 items-center"><FaSearch /> <span className='ml-4'>Search</span></p></Link>
 
           {user ? <button className='border hover:border-white px-2 mx-2 border-pink-700  my-2 flex h-10 items-center w-full' onClick={() => {
