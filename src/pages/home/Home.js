@@ -29,7 +29,7 @@ const Home = () => {
       </div>
       <h1 className='font-bold text-3xl text-center mt-10'>In lowest price buy qualified regular product </h1>
 
-      <div className='grid grid-cols-4 px-10 gap-7 mt-10'>
+      <div className='grid md:grid-cols-4 grid-cols-2 px-10 gap-7 mt-10'>
         {products.map((product, i) => <ProductCard key={i} product={product} />)}
       </div>
 
