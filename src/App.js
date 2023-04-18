@@ -11,15 +11,15 @@ import SubCategory from './pages/SubCategory';
 import Checkout from './pages/checkout/Checkout';
 import Payment from './pages/payment-getway/Payment';
 import SignUp from './pages/authentication/SingUp';
-import RequireAuth from './pages/authentication/RequireAuth';
+
 import Footer from './share/footer/Footer';
 import Orders from './pages/admin/Orders';
 import Dashboard from './pages/admin/Dashboard';
 import AllUser from './pages/admin/AllUser';
 import MyOrders from './pages/admin/MyOrders';
-import RequireAdmin from './pages/authentication/RequireAdmin';
+
 import Profile from './pages/admin/Profile';
-import {  useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createContext } from 'react';
 import Search from './pages/search/Search';
 import ResetPassword from './pages/authentication/ResetPassword';
@@ -27,6 +27,8 @@ import UploadProducts from './pages/admin/uploadProducts';
 import Home3 from './pages/admin/AllProducts';
 import CreateCategory from './pages/admin/CreateCategory';
 import Category from './pages/category';
+import url from './components/url';
+import RequireAuth from './pages/authentication/RequireAuth';
 
 
 
@@ -35,11 +37,35 @@ export const UserContext = createContext('mohid')
 
 function App() {
 
-const [user ,setUser] = useState(false)
+  const [user, setUser] = useState(false)
+  const [dip, setDip] = useState(false)
+  const [loading, setLoading] = useState(true)
 
-useEffect(()=>{},[user])
+  useEffect(() => {
+
+    fetch(`${url}/me`, {
+      method: 'GET',
+      headers: { authorization: `Bearer ${localStorage.getItem('accessToken')}` },
+
+    }).then(res => res.json())
+      .then(data => {
+
+        if (data.email) {
+          setUser(true)
+          setLoading(false)
+        }
+      }).catch(error => {
+        setUser(false)
+      });
+setLoading(false)
+  }, [dip])
+
+
+
+
+
   return (
-    <UserContext.Provider value={{user ,setUser }}>
+    <UserContext.Provider value={{ user, setUser, dip, setDip, loading, setLoading }}>
       <div>
         <div>
           <Navbar />
@@ -57,14 +83,14 @@ useEffect(()=>{},[user])
             <Route path='signUp' element={<SignUp />} />
             <Route path='checkout' element={<RequireAuth><Checkout /></RequireAuth>} />
             <Route path='payment' element={<RequireAuth><Payment /></RequireAuth>} />
-            <Route path='dashboard' element={<RequireAuth><Dashboard /> </RequireAuth>}>
+            <Route path='dashboard' element={<RequireAuth><Dashboard /></RequireAuth>}>
               <Route index='profile' element={<Profile></Profile>}></Route>
               <Route path='MyOrders' element={<MyOrders></MyOrders>}></Route>
-              <Route path='AllOrders' element={<RequireAdmin><Orders /></RequireAdmin>}></Route>
-              <Route path='allUser' element={<RequireAdmin><AllUser /></RequireAdmin>}></Route>
-              <Route path='allProducts' element={< Home3/>} />
-              <Route path='uploadProducts' element={<UploadProducts/>} />
-              <Route path='createCategory' element={<CreateCategory/>} />
+              <Route path='AllOrders' element={<Orders />}></Route>
+              <Route path='allUser' element={<AllUser />}></Route>
+              <Route path='allProducts' element={< Home3 />} />
+              <Route path='uploadProducts' element={<UploadProducts />} />
+              <Route path='createCategory' element={<CreateCategory />} />
             </Route>
           </Routes>
         </div>

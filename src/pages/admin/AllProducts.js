@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import url from '../../components/url';
 
 
 const Home2 = () => {
@@ -7,7 +8,7 @@ const Home2 = () => {
 
 
     const getUserData = async () => {
-        await fetch("http://localhost:8004/getdata", {
+        await fetch(`${url}/products`, {
             headers: {
                 "Content-Type": "application/json"
             }
@@ -45,7 +46,7 @@ const Home2 = () => {
 
                 </div>
                 {data.map(d => <div key={d.id} className='flex justify-between items-center px-4 py-2 rounded border-[1px] border-teal-600 mt-2'>
-                    <div className='w-24 '> <img className='h-14 w-14 rounded-full p-2 border-[1px] border-teal-700' src={`http://localhost:8004/uploads/${d.img}`} alt="" /></div>
+                    <div className='w-24 '> <img className='h-14 w-14 rounded-full p-2 border-[1px] border-teal-700' src={`${url}/uploads/${d.img}`} alt="" /></div>
                     <p className='w-24 text-start'>{d.name}</p>
                     <p className='w-24 text-start'>$ {d.priceOfUnit}</p>
                     <p className='w-24 text-start'>Show In Home Page</p>

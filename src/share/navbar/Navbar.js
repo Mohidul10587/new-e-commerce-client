@@ -25,8 +25,8 @@ const Navbar = () => {
   const signedOut = () => {
 
     localStorage.removeItem('accessToken');
-    value.setUser(false)
-    navigate('/logIn');
+    value.setDip(!value.dip)
+    
   }
 
 

@@ -12,7 +12,7 @@ const SubCategory = () => {
   const query = useParams()
   const subCategoryName = query.subCategoryName;
 
-
+  const [loading, setLoading] = useState(true)
   const [products, setProducts] = useState([])
 
   useEffect(() => {
@@ -23,21 +23,15 @@ const SubCategory = () => {
         'authorization': `Bearer ${localStorage.getItem('accessToken')}`
       }
     }).then(res => res.json())
-      .then(data => setProducts(data.data))
+    .then(data =>{          
+      setProducts(data.data)
+      setLoading(false)
+  })
 
 
   }, [subCategoryName])
 
-  // useEffect(() => {
-  //   fetch(`https://mohid-shop.onrender.com/proCount/${subCategoryName}`)
-  //     .then(res => res.json())
-  //     .then(data => setCount(data.count))
-  // }, [subCategoryName])
-
-  // if (isLoading) {
-  //   return <div className='min-h-[600px] flex justify-center font-bold text-3xl mt-10'> <p>Loading...</p></div>
-  // }
-
+  if (loading)return <div className='flex justify-center items-center min-h-screen'><p className='text-2xl'>Loading...</p></div>
   return (
     <div className='min-h-[600px]'>
       <h1 className='font-bold text-3xl text-center my-10'>{subCategoryName}</h1>

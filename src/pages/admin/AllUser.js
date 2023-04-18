@@ -6,17 +6,18 @@ import url from '../../components/url';
 const AllUser = () => {
 
 
-  const { isLoading, data: users, refetch } = useQuery('users', () =>
+  const { isLoading, data: users} = useQuery('users', () =>
     fetch(`${url}/getAllUsers`, {
       method: 'GET',
       headers: {
-        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        "Content-Type": "application/json",
+        
       },
     })
       .then(res => res.json())
   )
 
-  if (isLoading) return <p className='min-h-[600px]'>Loading</p>
+  if (isLoading) return <p className='min-h-[600px]'>Loadinghhhhhhhhhhhhhh....</p>
   console.log(users)
   return (
     <div className='min-h-[600px]'>

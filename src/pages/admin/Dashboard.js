@@ -9,13 +9,6 @@ import {GoThreeBars} from 'react-icons/go'
 
 const Dashboard = () => {
 
-  const [user] = useAuthState(auth)
-  const [admin] = useAdmin(user)
-
-
-
-
-
 
 
   return (
@@ -30,13 +23,14 @@ const Dashboard = () => {
           <Outlet></Outlet>
         </div>
       </div>
+
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 sm:w-72 w-56 bg-pink-600 text-base-content">
           {/* <!-- Sidebar content here --> */}
           <li className='mb-2 bg-white rounded-md'> <Link to='/dashboard'>Profile</Link></li>
           <li className='mb-2 bg-white rounded-md'> <Link to='/dashboard/MyOrders'>My Orders</Link></li>
-          {admin && <div>
+         <div>
 
             <li className='mb-2 bg-white rounded-md'> <Link to='/dashboard/AllOrders'>All Orders</Link></li>
             <li className='mb-2 bg-white rounded-md'> <Link to='/dashboard/allUser'>All User</Link></li>
@@ -46,7 +40,7 @@ const Dashboard = () => {
             <li className='mb-2 bg-white rounded-md'> <Link to='/dashboard/createCategory'>Create Category</Link></li>
 
 
-          </div>}
+          </div>
         </ul>
 
       </div>
