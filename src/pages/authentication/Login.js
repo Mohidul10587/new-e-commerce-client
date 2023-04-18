@@ -52,7 +52,7 @@ const Login = () => {
     setLoading(false)
   }
 
-if(loading)return 'Loading....'
+if(loading)return <div className='flex justify-center items-center min-h-screen'><p className='text-2xl'>Loading...</p></div>
 
 
   return (
